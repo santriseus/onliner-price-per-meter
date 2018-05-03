@@ -1,0 +1,22 @@
+{
+  "name": "Onliner недвижимость - Цена за метр квадратный.",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Расширение отображает цену за метр квадратный при просмотре каталога объявлений онлайнера.\nЦена вычисляется как цена в долларах, разделенная на общую площадь квартиры и округленная до ближайшего большего целого числа.",
+  "homepage_url": "https://github.com/santriseus/onliner-realt",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://r.onliner.by/pk/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
