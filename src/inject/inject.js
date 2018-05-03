@@ -7,7 +7,7 @@
     const areaSelector = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2) > span:nth-child(1)';
     const apptPriceSelector = 'div.apartment-bar > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)';
     const apptAreaSelector = 'table.apartment-options-table > tbody > tr:nth-child(1)> td:nth-child(2)';
-    const errorText = 'Ошибка в расширении хрома "Onliner недвижимость - Цена за метр квадратный.": ';
+    const errorText = 'Ошибка в расширении хрома "Onliner - Цена за метр квадратный.": ';
 
     if (window.location.href.includes(apptLink)){
         processApptLink();
