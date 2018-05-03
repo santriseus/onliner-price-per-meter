@@ -1,6 +1,6 @@
 {
   "name": "Onliner - Цена за метр квадратный.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Расширение отображает цену за метр квадратный при просмотре каталога объявлений онлайнера.",
   "homepage_url": "https://github.com/santriseus/onliner-price-per-meter",
@@ -9,21 +9,14 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "page_action": {
+  "browser_action": {
     "default_icon": {
       "16": "icons/icon16.png",
       "32": "icons/icon32.png"
     },
     "default_title": "Onliner - Цена за метр квадратный.",
-    "default_popup": "src/popup/popup.html"
+    "default_popup": "src/popup.html"
   },
-  "background": {
-    "scripts": ["src/background.js"],
-    "persistent": false
-  },
-  "permissions": [
-    "declarativeContent"
-  ],
   "content_scripts": [
     {
       "matches": [
