@@ -9,7 +9,7 @@
     const areaSelector = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2) > span:nth-child(1)';
     const areaSelectorPopup = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2)';
     const apptPriceSelector = 'div.apartment-bar > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)';
-    const apptAreaSelector = 'table.apartment-options-table > tbody > tr:nth-child(1)> td:nth-child(2)';
+    const apptAreaSelector = 'table.apartment-options-table > tbody > tr:nth-child(2)> td:nth-child(2)';
     const errorText = 'Ошибка в расширении хрома "Onliner - Цена за метр квадратный.": ';
 
     if (window.location.href.includes(apptLink)){
@@ -50,7 +50,7 @@
         let popupMutationHandler = function popupMutationHandler(mutationsList) {
             for (let mutation of mutationsList) {
                 for (let element of mutation.addedNodes) {
-                    if (element.className.indexOf(popupEntryClass) > -1) {
+                    if (element.className && element.className.indexOf(popupEntryClass) > -1) {
                         processPopoverPopupNode(element);
                     }
                 }
@@ -70,7 +70,7 @@
         let totalArea = Number.parseFloat(totalAreaElement.innerText.replace(/,/, '.'));
         let meterPrice = (Math.ceil(dollarPrice / totalArea));
         let elementToInsert = document.createElement("SPAN");
-        dollarSignElement.textContent += ',';
+        dollarSignElement.textContent += ', ';
         elementToInsert.innerText = meterPrice.toLocaleString('ru-RU') + ' $/кв.м';
         priceElement.appendChild(elementToInsert);
     }
@@ -86,7 +86,7 @@
             let totalArea = Number.parseFloat(totalAreaElement.textContent.replace(/"/, ''));
             let meterPrice = (Math.ceil(dollarPrice / totalArea));
             let elementToInsert = document.createElement("SPAN");
-            dollarSignElement.textContent += ',';
+            dollarSignElement.textContent += ', ';
             elementToInsert.innerText = meterPrice.toLocaleString('ru-RU') + ' $/кв.м';
             priceElement.appendChild(elementToInsert);
         }
