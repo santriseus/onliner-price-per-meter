@@ -7,6 +7,8 @@
     const popupEntryClass = 'map-popover';
     const priceSelector = 'span:nth-child(1) > span:nth-child(1) > span:nth-child(1)';
     const areaSelector = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2) > span:nth-child(1)';
+    const kitchenSelector = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2) > span:nth-child(5)';
+    const floorSelector = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(2)';
     const areaSelectorPopup = 'span:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(2)';
     const apptPriceSelector = 'div.apartment-bar > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) > span:nth-child(1)';
     const apptAreaSelector = 'table.apartment-options-table > tbody > tr:nth-child(2)> td:nth-child(2)';
@@ -68,6 +70,16 @@
         let dollarPrice = Number.parseFloat(dollarPriceElement.innerText.replace(/ /g, ''));
         let totalAreaElement = element.querySelector(areaSelector) || null;
         let totalArea = Number.parseFloat(totalAreaElement.innerText.replace(/,/, '.'));
+        let kitchenElement = element.querySelector(kitchenSelector) || null;
+        if (!kitchenElement || Number.parseFloat(kitchenElement.innerText.replace(/,/, '.')) < 8){
+            element.parentNode.removeChild(element);
+            return;
+        }
+        let floorElement = element.querySelector(floorSelector) || null;
+        if (!floorElement || Number.parseInt(floorElement.innerText.replace(/,/, '.')) > 6){
+            element.parentNode.removeChild(element);
+            return;
+        }
         let meterPrice = (Math.ceil(dollarPrice / totalArea));
         let elementToInsert = document.createElement("SPAN");
         dollarSignElement.textContent += ', ';
